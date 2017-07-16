@@ -1,0 +1,60 @@
+#
+# fgj配置模板
+#
+
+spring:
+    # http://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#using-boot-devtools-restart-exclude
+    devtools.restart.additional-exclude: images/**,VAADIN/**
+
+server:
+    port: 8080
+    contextPath: /fgj
+
+    tomcat:
+        access_log_enabled: true
+        basedir: target/tomcat
+
+spring.datasource:
+    # 数据源
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:tcp://localhost/~/h2/fgj;MODE=Oracle
+    username: sa
+    password:
+    tomcat:
+        test-while-idle: true
+        test-on-borrow: true
+        validation-query: select 1
+
+# SPRING MVC (WebMvcProperties)，设定async请求的超时时间，以毫秒为单位
+spring.mvc.async.request-timeout: 120000
+
+# 会话
+spring.redis:
+    host: ${redis-host}
+    port: 6379
+    password: ${redis-password}
+
+spring.session.store-type: none
+
+# qic
+qic:
+    qis-server: ${qis-server}
+    corpId: ${corpId}
+    qic-id: fgj
+    enable-share: ${enable-share:false}
+
+# 事件中心
+hec.client:
+    serverUrl: ${hec-server}
+    camel-file-endpoint-uri: file://${fileroot}/to-hec-data
+
+fgj:
+    # 各部门ID号配置
+    # 游客部门
+    roster.department.guest: 10016
+
+    # 散客
+    roster.department.individual: 10017
+
+    # 服务商
+    roster.department.supplier: 10018

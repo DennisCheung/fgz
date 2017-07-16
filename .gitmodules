@@ -1,0 +1,6 @@
+[submodule "dbscript"]
+	path = dbscript
+	url = ssh://review.benewit.com:29418/fgj-dbscript
+[submodule "fxp"]
+	path = fxp
+	url = ssh://review.benewit.com:29418/fxp

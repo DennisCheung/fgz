@@ -1,0 +1,19 @@
+
+<!-- 定时的弹框 -->
+<!--弹框1 -->
+<div class="order-detail-alert errAnimate">
+    <div class="alert_box">
+        <div class="close o_v">
+            <span class="fr alert-promit ta_c"><b class="time" ng-bind="index"></b>&nbsp;秒关闭</span>
+        </div>
+        <img src="../images/succeed.png" class="imgOk">
+        <p class="alert_text ta_c" ng-show="state === '2'?true:false">
+            <span ng-bind="'已成功回收,'"></span><br>
+            <span ng-bind="device"></span>
+        </p>
+        <p class="alert_text ta_c" ng-show="state === '1'?true:false">
+            <span ng-bind="device + ',' + type"></span><br>
+            <span ng-bind="'已成功发放给' + name"></span>
+        </p>
+    </div>
+</div>

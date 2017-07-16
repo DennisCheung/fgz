@@ -1,0 +1,22 @@
+<!-- 选择设备 -->
+
+<section class="select-customer">
+    <div class="select-search-wapper distance" ui-sref="searchDevice({state:state})">
+        <span class="select-search">
+            <i class="iconfont icon-sousuo-sousuo iconfont-search"></i>
+            <span class="promit-text">设备号</span>
+        </span>
+    </div>
+    <h2 class="search-title distance">历史记录</h2>
+    <ul class="select-customer-history">
+        <li class="history-item distance" ng-repeat="item in historyList track by $index" ng-click="selectMember(item)">
+            <span class="history-name" ng-bind="item.name"></span><span class="history-ID" ng-bind="item.ID"></span><span class="history-tell" ng-bind="item.tell"></span>
+        </li>
+        <li class="clear-history ta_c" ng-click="clearHistory()" ng-show="historyList.length>0?true:false">
+            <div class="clear-wappper o_v">
+                <span class="clearicon fl"></span>
+                <span class="clear-text fl">清空历史记录</span>
+            </div>
+        </li>
+    </ul>
+</section>

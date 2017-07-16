@@ -1,0 +1,10 @@
+
+<!-- 成员列表 -->
+<section class="person">
+    <h1 class="title distance">列表</h1>
+    <ul class="personList">
+        <li class="personlist-item distance" ng-repeat="item in deviceList track by $index" ng-click="selectPerson(item)">
+            <span class="person-name" ng-bind="item.personName||item.famPerson"></span><span class="person-sex" ng-bind="item.sexName"></span><span class="person-num" ng-bind="$index+1"></span><span class="person-ID" ng-bind="item.idNo"></span>
+        </li>
+    </ul>
+</section>

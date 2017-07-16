@@ -1,0 +1,32 @@
+
+<!-- 发放手环 -->
+<section class="hand-Bracelets distance">
+    <ul class="hand-Bracelets-list">
+        <li class="hand-Bracelets-item hand-Bracelets-item-first" ui-sref="selectCustomer({state:'provide'})">
+            <div arrow></div>
+            <span class="hand-Bracelets-item-desc hand-Bracelets-item-desc1 fl">客户</span>
+            <span class="hand-Bracelets-item-name fr {{selectCustomerInfo.basicInfo.personName?'name':'no-name'}}" ng-bind="selectCustomerInfo?selectCustomerInfo.basicInfo.personName+' '+selectCustomerInfo.basicInfo.idNo:'请选择客户'"></span>
+        </li>
+        <li class="hand-Bracelets-item" ui-sref="selectDevice({state:'provide'})">
+            <div arrow></div>
+            <span class="hand-Bracelets-item-desc hand-Bracelets-item-desc2 fl">设备</span>
+            <span class="hand-Bracelets-item-name fr omg {{selectDevice.basicInfo.deviceModelName?'name':'no-name'}}" ng-bind="selectDevice?selectDevice.basicInfo.deviceModelName+' '+ selectDevice.basicInfo.deviceTypeName+ ' '+selectDevice.basicInfo.deviceSn:'请选择设备'"></span>
+
+        </li>
+        <li class="hand-Bracelets-item" ui-sref="remark({state:'provide'})">
+            <div arrow></div>
+            <span class="hand-Bracelets-item-desc hand-Bracelets-item-desc3 fl">备注</span>
+            <span class="hand-Bracelets-item-name fr {{remark?'name':'no-name'}} omg" ng-bind="remark?remark:'请输入备注'"></span>
+        </li>
+    </ul>
+    <a class="ZYBtn provideBtn" ng-click="provide()">发放</a>
+
+    <!-- 弹出框 -->
+    <div alert-time device="device" type="deviceType" name="personname" index="index" ng-show="show" state="'1'"></div>
+
+    <!-- 信息输入不完整提示 -->
+    <div info-promit promit="promitInfo" ng-show="infoPromit"></div>
+
+    <!-- loading -->
+    <div loadding ng-show="load"></div>
+</section>

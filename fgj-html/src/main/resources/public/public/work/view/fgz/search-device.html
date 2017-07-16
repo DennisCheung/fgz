@@ -1,0 +1,23 @@
+<section class="select-customer search search-device">
+    <div class="select-search-wapper distance">
+        <div class="select-search-wapperIn">
+            <i class="iconfont icon-sousuo-sousuo iconfont-search"></i>
+            <input class="promit-text" type="text" placeholder="请输入设备号" ng-model="deviceInfo">
+            <input type="button" value="X" class="search-search" ng-click="cancleClick()">
+            <input type="button" value="搜索" class="search-click" ng-click="searchClick()">
+        </div>
+    </div>
+    <h2 class="search-title distance">搜索结果</h2>
+    <div class="select-customer-result-all o_v" id="scroll2">
+        <ul class="select-customer-result">
+            <li class="search-device distance" scroll-list style="background: #fff;" ng-repeat="item in serviceList track by $index" ng-click="selectDevice(item)" >
+                <p class="device-name">设备名称：<span class="name" ng-bind="item.basicInfo.deviceModelName"></span></p>
+                <p class="device-type">设备类型：<span class="type" ng-bind="item.basicInfo.deviceTypeName"></span></p>
+                <p class="device-num">设备编码：<span class="bianma" ng-bind="item.basicInfo.deviceSn"></span><span class="sn fr">客户号：<i class="sn-num" ng-bind="item.userNo"></i></span></p>
+            </li>
+        </ul>
+    </div>
+
+    <!-- 信息输入不完整提示 -->
+    <div info-promit promit="'没有找到该设备。'" ng-show="infoPromit"></div>
+</section>

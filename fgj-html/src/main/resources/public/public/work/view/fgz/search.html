@@ -1,0 +1,21 @@
+<section class="select-customer search">
+    <div class="select-search-wapper distance">
+        <div class="select-search-wapperIn">
+            <i class="iconfont icon-sousuo-sousuo iconfont-search"></i>
+            <input class="promit-text" type="text" placeholder="姓名/身份证号/手机号" ng-model="searchText">
+            <input type="button" value="X" class="search-search" ng-click="cancleClick()">
+            <input type="button" value="搜索" class="search-click" ng-click="searchClick()">
+        </div>
+    </div>
+    <h2 class="search-title distance">搜索结果</h2>
+    <div class="select-customer-result-all o_v" id="scroll">
+        <ul class="select-customer-result">
+            <li scroll-list class="history-item distance" style="background: #fff;" ng-repeat="item in personList track by $index" ng-click="selectMember(item)">
+                <span class="history-name omg d_ib" ng-bind="item.basicInfo.personName"></span><span class="history-ID d_ib omg" ng-bind="item.basicInfo.idNo"  ng-show="item.basicInfo.idNo.length>0"></span><span class="history-tell d_ib" ng-bind="item.relationInfo.personMobile"></span>
+            </li>
+        </ul>
+    </div>
+
+    <!-- 没有找到该客户 -->
+    <div info-promit promit="'没有找到该客户。'" ng-show="infoPromit"></div>
+</section>

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.wit</groupId>
+    <artifactId>wit-parent</artifactId>
+    <version>2.3.26</version>
+  </parent>
+  <groupId>com.wit.fgj</groupId>
+  <artifactId>fgj</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+
+  <packaging>pom</packaging>
+
+  <scm>
+    <url>ssh://review.benewit.com:29418/fgj</url>
+    <connection>scm:git:ssh://review.benewit.com:29418/fgj</connection>
+    <tag>HEAD</tag>
+  </scm>
+
+  <properties>
+    <!-- 应与fxp子模块里的版本号相同 -->
+    <fxp.version>2.0.54-SNAPSHOT</fxp.version>
+
+    <camel.version>2.18.1</camel.version>
+    <spring-test-dbunit.version>1.2.1</spring-test-dbunit.version>
+    <qix.version>1.0.45</qix.version>
+    <hec.version>2.0.0</hec.version>
+    <hevent-loc.version>1.0.5</hevent-loc.version>
+  </properties>
+
+  <modules>
+    <module>fxp/fxp-test</module>
+    <module>fxp/fxp-core</module>
+    <module>fxp/fxp-domain</module>
+
+    <module>parent</module>
+    <module>fgj-core</module>
+    <module>fgj-web</module>
+    <module>fgj-service</module>
+    <module>fgj-event</module>
+    <module>fgj-front</module>
+    <module>fgj-html</module>
+
+    <module>fgj-web-dev</module>
+    <module>fgj-web-linux</module>
+    <module>fgj-web-html</module>
+    <module>fgj-it-htmldb</module>
+  </modules>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- qix -->
+      <dependency>
+        <groupId>com.wit.qix</groupId>
+        <artifactId>qix-prot</artifactId>
+        <version>${qix.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.wit.qix.client</groupId>
+        <artifactId>qic-client</artifactId>
+        <version>${qix.version}</version>
+      </dependency>
+
+      <!-- camel -->
+      <dependency>
+        <groupId>org.apache.camel</groupId>
+        <artifactId>camel-core</artifactId>
+        <version>${camel.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.camel</groupId>
+        <artifactId>camel-spring</artifactId>
+        <version>${camel.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.camel</groupId>
+        <artifactId>camel-http4</artifactId>
+        <version>${camel.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.camel</groupId>
+        <artifactId>camel-spring-javaconfig</artifactId>
+        <version>${camel.version}</version>
+      </dependency>
+
+      <!-- spring-test-dbunit -->
+      <dependency>
+        <groupId>com.github.springtestdbunit</groupId>
+        <artifactId>spring-test-dbunit</artifactId>
+        <version>${spring-test-dbunit.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <version>3.4</version>
+      </dependency>
+
+      <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>2.5</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
+          <configuration>
+            <mainClass>com.wit.Application</mainClass>
+            <executable>true</executable>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-failsafe-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+
+  <profiles>
+    <profile>
+      <id>default-tools.jar</id>
+      <activation>
+        <property>
+          <name>java.vendor</name>
+          <value>Oracle Corporation</value>
+        </property>
+      </activation>
+      <dependencies>
+        <dependency>
+          <groupId>com.sun</groupId>
+          <artifactId>tools</artifactId>
+          <version>${java.version}</version>
+          <optional>true</optional>
+          <scope>system</scope>
+          <systemPath>${java.home}/../lib/tools.jar</systemPath>
+        </dependency>
+      </dependencies>
+    </profile>
+  </profiles>
+
+  <repositories>
+    <repository>
+      <id>m2-snapshots</id>
+      <name>Benewit Maven2 Snapshot Repository</name>
+      <url>http://m2.benewit.com:8081/nexus/content/repositories/snapshots</url>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>interval:30</updatePolicy>
+      </snapshots>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+    </repository>
+    <repository>
+      <id>m2-releases</id>
+      <name>Benewit Maven2 Releases Repository</name>
+      <url>http://m2.benewit.com:8081/nexus/content/repositories/releases</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+    </repository>
+  </repositories>
+</project>

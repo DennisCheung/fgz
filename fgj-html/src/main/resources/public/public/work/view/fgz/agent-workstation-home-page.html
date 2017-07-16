@@ -1,0 +1,10 @@
+
+<!-- 代理人工作站主页 -->
+<section class="workstation-home-page">
+    <ul class="workstation-home-page-list">
+        <li class="workstation-home-page-listItem {{$index!==2?'b-r':''}} ta_c" ng-repeat="item in homePageList track by $index" ui-sref="{{item.url}}">
+            <img class="workstation-home-page-pic" ng-src="{{item.imgUrl}}" />
+            <span ng-bind="item.text"></span>
+        </li>
+    </ul>
+</section>

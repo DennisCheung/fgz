@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width" />
+
+    <!-- css文件 -->
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/fgz-index.css">
+
+    <!-- 字体图标 -->
+    <link rel="stylesheet" href="../fonts/iconfont.css">
+    <title>福管家</title>
+</head>
+<body>
+<div id="myView" ui-view></div>
+
+<!-- 第三方框架 -->
+<script src="../vender/angular/angular.min.js"></script>
+<script src="../vender/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="../vender/angular-animate/angular-animate.min.js"></script>
+<script src="../vender/angular-cookies/angular-cookies.min.js"></script>
+<script src="../js/other/session.js"></script>
+<script src="../js/other/bscroll.min.js"></script>
+
+<!-- 自己写的js -->
+<script src="../js/app.js"></script>
+<script src="../js/config/router.js"></script>
+<script src="../js/directive/directive.js"></script>
+<script src="../js/service/service.js"></script>
+<script src="../js/controller/controller.js"></script>
+<script>
+    /*
+     * 根据屏幕宽度改变根元素字体
+     */
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function () {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = window.screen.width / 10 + 'px';
+            };
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+
+    // session.js
+    sessionOut(app);
+</script>
+</body>
+</html>

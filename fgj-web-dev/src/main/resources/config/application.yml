@@ -1,0 +1,36 @@
+#
+# 开发环境的配置文件
+#
+# 由于本文件放在config目录下，因此将覆盖fgj-web里的设置
+#
+
+spring.profiles.active: dev
+
+spring.resources.cache-period: 1
+
+# 文件根目录
+fileroot: ${user-home}/fgj/dev
+
+redis-host: www.jkjsf.net
+redis-password: eHek5Mwp2A7JlpKQGet7xg7cvhNbCwds
+
+qis-server: http://www.jkjsf.net
+hec-server: http://www.jkjsf.net/hec-web
+
+server:
+    port: 8080
+    contextPath: /fgj${forwarding-port:}
+
+# 企业号ID
+corpId: wx415a8516a31a6ec4
+
+# 共享会话
+spring.session.store-type: none
+
+# 数据源
+spring.datasource:
+    url: jdbc:h2:tcp://localhost/~/h2/fxp;MODE=Oracle
+    username: sa
+    password:
+
+pic.client.serverUrl: http://www.jkjsf.net/pic

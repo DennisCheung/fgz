@@ -1,0 +1,15 @@
+
+<!-- 设备记录 -->
+<section class="look-release-records">
+    <ul class="records-wrappper">
+        <li class="records-list o_v distance" ng-repeat="item in provideList || recycleList track by $index">
+            <p class="records-time" ng-bind="item.issueInfo.issueDate || item.recycleInfo.recycleDate | date:'yyyy-MM-dd'"></p>
+            <div class="records-detail">
+                <span class="records-text" ng-bind="item.deviceInfo.deviceModelName"></span><span class="records-ID" ng-bind="item.deviceInfo.deviceSn"></span><span class="records-ID" style="margin-left: 0;" ng-bind="item.userNo===NULL?'':item.userNo"></span><span class="records-name" ng-bind="item.deviceInfo.deviceTypeId==='CALL'?item.familyInfos.housename:item.personInfo.personName"></span>
+            </div>
+        </li>
+    </ul>
+
+    <!-- 信息输入不完整提示 -->
+    <div info-promit promit="'没有数据'" ng-show="infoPromit"></div>
+</section>

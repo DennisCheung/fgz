@@ -1,0 +1,8 @@
+#
+# 本地集成测试环境的配置文件。
+#
+
+spring.datasource:
+    url: jdbc:h2:tcp://jenkins.benewit.com/~/h2/fgjit;MODE=Oracle
+    username: sa
+    password:

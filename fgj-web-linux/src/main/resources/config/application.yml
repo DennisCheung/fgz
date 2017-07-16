@@ -1,0 +1,40 @@
+#
+# 生产环境的配置文件
+#
+# 由于本文件放在config目录下，因此将覆盖fgj-web里的设置
+#
+
+spring.profiles.active: prod
+
+# 文件根目录
+fileroot: ${user-home}/fgj/dev
+
+redis-host: www.jkjsf.net
+qis-server: http://www.jkjsf.net
+hec-server: http://www.jkjsf.net/hec-web
+
+server:
+    port: 8080
+    contextPath: /fgj
+
+# 企业号ID
+corpId: wx415a8516a31a6ec4
+
+# 共享会话
+spring.session.store-type: redis
+
+enable-share: true
+
+# 数据源
+spring.datasource:
+    url: jdbc:h2:tcp://localhost/~/h2/fxp;MODE=Oracle
+    username: sa
+    password:
+
+fgj:
+   sendMailOnError: true
+   ignoredExceptions:
+       - exceptionClass: java.lang.IllegalArgumentException
+         exceptionMessage: 无效或已过期的认证凭证
+
+pic.client.serverUrl: http://www.jkjsf.net/pic
